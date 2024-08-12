@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'drawer/contactus.dart';
+import 'drawer/contact_us.dart';
 
 Widget blockedUser(BuildContext context) {
   return Scaffold(
@@ -55,7 +55,7 @@ Widget blockedUser(BuildContext context) {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Contactus()));
+                            builder: (context) => const ContactUs()));
                   },
                 ))
           ]),

@@ -1,1 +1,0 @@
- /Users/tawasal/Desktop/Flutter_Projects/speak/the_Project/arabicchildAndroid/.dart_tool/flutter_build/20ef65f3eb86d846e49379612a4c363b/native_assets.yaml: 

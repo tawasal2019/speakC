@@ -1,15 +1,17 @@
 // ignore_for_file: use_build_context_synchronously, non_constant_identifier_names
 
-import '/controller/istablet.dart';
-import '/questionspages.dart/childFirstInfo.dart';
+import 'package:arabicchildandroid/view/Auth/verify_email.dart';
+
+import '../../childpage/child/main_child_page.dart';
+import '/controller/is_tablet.dart';
+import '/questionspages.dart/child_first_info.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../childpage/child/mainchildPage.dart';
-import '../../controller/checkinternet.dart';
-import '../../controller/getAllDataPediction.dart';
-import '../../controller/setdataonlogin.dart';
+import '../../controller/check_internet.dart';
+import '../../controller/get_all_data_pediction.dart';
+import '../../controller/set_data_on_login.dart';
 import '/controller/var.dart';
-import '/view/Auth/forgetpass.dart';
+import '/view/Auth/forget_pass.dart';
 import '/view/Auth/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -61,391 +63,413 @@ class _LoginState extends State<Login> {
             ),
             Center(
                 child: SingleChildScrollView(
-              child: Container(
-                height:
+                  child: Container(
+                    height:
                     MediaQuery.of(context).orientation == Orientation.portrait
                         ? MediaQuery.of(context).size.height * .7
                         : MediaQuery.of(context).size.height * .95,
-                width: DeviceUtil.isTablet
-                    ? MediaQuery.of(context).orientation == Orientation.portrait
+                    width: DeviceUtil.isTablet
+                        ? MediaQuery.of(context).orientation == Orientation.portrait
                         ? MediaQuery.of(context).size.width * .6
                         : MediaQuery.of(context).size.width * .44
-                    : MediaQuery.of(context).orientation == Orientation.portrait
+                        : MediaQuery.of(context).orientation == Orientation.portrait
                         ? MediaQuery.of(context).size.width * .8
                         : MediaQuery.of(context).size.width * .5,
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    border:
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border:
                         Border.all(color: const Color(0xff989999), width: 2),
-                    borderRadius: BorderRadius.circular(40)),
-                child: SafeArea(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: Column(children: [
-                      SizedBox(
-                          height: DeviceUtil.isTablet ? 100 : 50,
-                          width: DeviceUtil.isTablet ? 100 : 50,
-                          child: Image.asset("assets/uiImages/user.png")),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16),
-                        child: Text(
-                          "تسجيل الدخول",
-                          style: TextStyle(
-                            fontSize: DeviceUtil.isTablet ? 40 : 25,
-                            color: maincolor,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                          child: Column(
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: Container(),
-                          ),
+                        borderRadius: BorderRadius.circular(40)),
+                    child: SafeArea(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Column(children: [
+                          SizedBox(
+                              height: DeviceUtil.isTablet ? 100 : 50,
+                              width: DeviceUtil.isTablet ? 100 : 50,
+                              child: Image.asset("assets/uiImages/user.png")),
                           Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Material(
-                              elevation: 12,
-                              shadowColor: greyColor.withOpacity(.6),
-                              borderRadius: BorderRadius.circular(25),
-                              child: TextFormField(
-                                controller: _emailcontroller,
-                                validator: (value) {
-                                  return validate(value, 'البريد الإلكتروني');
-                                },
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.symmetric(
-                                        vertical: DeviceUtil.isTablet ? 33 : 20,
-                                        horizontal: 15),
-                                    errorStyle: const TextStyle(
-                                        fontSize: 18, color: Colors.red),
-                                    filled: true,
-                                    fillColor: Colors.white,
-                                    labelText: "الايــمـيــل",
-                                    labelStyle: TextStyle(
-                                        color: greyColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold),
-                                    border: OutlineInputBorder(
+                            padding: const EdgeInsets.only(top: 16),
+                            child: Text(
+                              "تسجيل الدخول",
+                              style: TextStyle(
+                                fontSize: DeviceUtil.isTablet ? 40 : 25,
+                                color: maincolor,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    flex: 2,
+                                    child: Container(),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(15),
+                                    child: Material(
+                                      elevation: 12,
+                                      shadowColor: greyColor.withOpacity(.6),
                                       borderRadius: BorderRadius.circular(25),
-                                    )),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 15, right: 15, top: 10),
-                            child: Material(
-                              elevation: 12,
-                              shadowColor: greyColor.withOpacity(.6),
-                              borderRadius: BorderRadius.circular(25),
-                              child: TextFormField(
-                                controller: _passwordcontroller,
-                                validator: (value) {
-                                  if (value!.isEmpty) {
-                                    return ' أدخل كلمة المرور';
-                                  }
-                                  return null;
-                                },
-                                obscureText: _passwordVisible,
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.symmetric(
-                                      vertical: DeviceUtil.isTablet ? 33 : 20,
-                                      horizontal: 15),
-                                  errorStyle: const TextStyle(
-                                      fontSize: 18, color: Colors.red),
-                                  suffixIcon: IconButton(
-                                    icon: Icon(
-                                      _passwordVisible
-                                          ? Icons.visibility
-                                          : Icons.visibility_off,
-                                      color: pinkColor,
+                                      child: TextFormField(
+                                        controller: _emailcontroller,
+                                        validator: (value) {
+                                          return validate(value, 'البريد الإلكتروني');
+                                        },
+                                        autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                        decoration: InputDecoration(
+                                            contentPadding: EdgeInsets.symmetric(
+                                                vertical: DeviceUtil.isTablet ? 33 : 20,
+                                                horizontal: 15),
+                                            errorStyle: const TextStyle(
+                                                fontSize: 18, color: Colors.red),
+                                            filled: true,
+                                            fillColor: Colors.white,
+                                            labelText: "الايــمـيــل",
+                                            labelStyle: TextStyle(
+                                                color: greyColor,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                            border: OutlineInputBorder(
+                                              borderRadius: BorderRadius.circular(25),
+                                            )),
+                                      ),
                                     ),
-                                    onPressed: () {
-                                      setState(() {
-                                        _passwordVisible = !_passwordVisible;
-                                      });
-                                    },
                                   ),
-                                  filled: true,
-                                  fillColor: Colors.white,
-                                  labelText: "كلمة المرور",
-                                  labelStyle: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: greyColor,
-                                      fontSize: 20),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(25),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 15, right: 15, top: 10),
+                                    child: Material(
+                                      elevation: 12,
+                                      shadowColor: greyColor.withOpacity(.6),
+                                      borderRadius: BorderRadius.circular(25),
+                                      child: TextFormField(
+                                        controller: _passwordcontroller,
+                                        validator: (value) {
+                                          if (value!.isEmpty) {
+                                            return ' أدخل كلمة المرور';
+                                          }
+                                          return null;
+                                        },
+                                        obscureText: _passwordVisible,
+                                        decoration: InputDecoration(
+                                          contentPadding: EdgeInsets.symmetric(
+                                              vertical: DeviceUtil.isTablet ? 33 : 20,
+                                              horizontal: 15),
+                                          errorStyle: const TextStyle(
+                                              fontSize: 18, color: Colors.red),
+                                          suffixIcon: IconButton(
+                                            icon: Icon(
+                                              _passwordVisible
+                                                  ? Icons.visibility
+                                                  : Icons.visibility_off,
+                                              color: pinkColor,
+                                            ),
+                                            onPressed: () {
+                                              setState(() {
+                                                _passwordVisible = !_passwordVisible;
+                                              });
+                                            },
+                                          ),
+                                          filled: true,
+                                          fillColor: Colors.white,
+                                          labelText: "كلمة المرور",
+                                          labelStyle: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: greyColor,
+                                              fontSize: 20),
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(25),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(),
-                          ),
-                          InkWell(
-                            onTap: () async {
-                              if (_formKey.currentState?.validate() == null ||
-                                  _formKey.currentState!.validate()) {
-                                try {
-                                  setState(() {
-                                    loadingicon = true;
-                                  });
+                                  Expanded(
+                                    child: Container(),
+                                  ),
+                                  InkWell(
+                                    onTap: () async {
+                                      if (_formKey.currentState?.validate() == null ||
+                                          _formKey.currentState!.validate()) {
+                                        try {
+                                          setState(() {
+                                            loadingicon = true;
+                                          });
 
-                                  await FirebaseAuth.instance
-                                      .signInWithEmailAndPassword(
-                                          email: _emailcontroller.text.trim(),
-                                          password:
+                                          await FirebaseAuth.instance
+                                              .signInWithEmailAndPassword(
+                                              email: _emailcontroller.text.trim(),
+                                              password:
                                               _passwordcontroller.text.trim())
-                                      .then((value) async {
-                                    /////////////////
-                                    if (checkBoxValue) {
-                                      SharedPreferences myLoginInfo =
-                                          await SharedPreferences.getInstance();
-                                      myLoginInfo.setStringList("myLoginInfo", [
-                                        _emailcontroller.text,
-                                        _passwordcontroller.text
-                                      ]);
-                                    }
-                                    /////////////////
-                                    try {
-                                      final userChildDoc = FirebaseFirestore
-                                          .instance
-                                          .collection('childUsers')
-                                          .doc(FirebaseAuth
-                                              .instance.currentUser!.uid);
-
-                                      internetConnection().then((value) async {
-                                        if (value == true) {
-                                          setDataPredictionWordsAndImage();
-                                          await userChildDoc
-                                              .get()
                                               .then((value) async {
-                                            if (value.exists) {
-                                              if (value.data() == null ||
-                                                  value.data()!.isEmpty ||
-                                                  value.data() == {}) {
-                                                SharedPreferences
-                                                    getSignUpOrLogin =
-                                                    await SharedPreferences
-                                                        .getInstance();
-                                                getSignUpOrLogin.setBool(
-                                                    "getSignUpOrLogin", true);
-                                                Navigator.of(context)
-                                                    .pushAndRemoveUntil(
-                                                        MaterialPageRoute(
-                                                            builder: (context) =>
-                                                                const Selectedlib()),
-                                                        (route) => false);
-                                              } else {
-                                                setDataOnLoginChild(
-                                                        value.data())
-                                                    .then((value) async {
-                                                  SharedPreferences
+                                            /////////////////
+                                            if (checkBoxValue) {
+                                              SharedPreferences myLoginInfo =
+                                              await SharedPreferences.getInstance();
+                                              myLoginInfo.setStringList("myLoginInfo", [
+                                                _emailcontroller.text,
+                                                _passwordcontroller.text
+                                              ]);
+                                            }
+                                            /////////////////
+                                            try {
+                                              //////انشانا ملف للمستخدم في childUsers
+                                              final userChildDoc = FirebaseFirestore
+                                                  .instance
+                                                  .collection('childUsers')
+                                                  .doc(FirebaseAuth
+                                                  .instance.currentUser!.uid);
+
+                                              internetConnection().then((value) async {
+                                                if (value == true) {
+                                                  //افهم وش هذا
+                                                  print(userChildDoc);
+                                                  setDataPredictionWordsAndImage();
+                                                  await userChildDoc
+                                                      .get()
+                                                      .then((value) async {
+                                                    if (value.exists) {
+                                                      if (value.data() == null ||
+                                                          value.data()!.isEmpty ||
+                                                          value.data() == {}) {
+                                                        SharedPreferences
+                                                        getSignUpOrLogin =
+                                                        await SharedPreferences
+                                                            .getInstance();
+                                                        getSignUpOrLogin.setBool(
+                                                            "getSignUpOrLogin", true);
+                                                        //يختار من المكتات الموجودة اذا سجل اول مره
+                                                        Navigator.of(context)
+                                                            .pushAndRemoveUntil(
+                                                            MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                const SelectedLib()),
+                                                                (route) => false);
+                                                      } else {
+                                                        //هنا احط الميثود حقتي الي بتحفظ في الداتابيس وش المستخدم مخزنة لوكالي في جواله من مكتبات و مفضلة
+                                                        //ابحث عنها
+                                                        setDataOnLoginChild(
+                                                            value.data())
+                                                            .then((value) async {
+                                                          SharedPreferences
+                                                          getSignUpOrLogin =
+                                                          await SharedPreferences
+                                                              .getInstance();
+                                                          getSignUpOrLogin.setBool(
+                                                              "getSignUpOrLogin", true);
+                                                        });
+                                                      }
+                                                    } else {
+                                                      Navigator.of(context)
+                                                          .pushAndRemoveUntil(
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                              const SelectedLib()),
+                                                              (route) => false);
+                                                      SharedPreferences
                                                       getSignUpOrLogin =
                                                       await SharedPreferences
                                                           .getInstance();
-                                                  getSignUpOrLogin.setBool(
-                                                      "getSignUpOrLogin", true);
-                                                });
-                                              }
-                                            } else {
-                                              Navigator.of(context)
-                                                  .pushAndRemoveUntil(
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              const Selectedlib()),
-                                                      (route) => false);
-                                              SharedPreferences
-                                                  getSignUpOrLogin =
-                                                  await SharedPreferences
-                                                      .getInstance();
-                                              getSignUpOrLogin.setBool(
-                                                  "getSignUpOrLogin", true);
+                                                      getSignUpOrLogin.setBool(
+                                                          "getSignUpOrLogin", true);
+                                                    }
+                                                    if(  ( FirebaseAuth.instance.currentUser!=null)&&(FirebaseAuth.instance.currentUser!.emailVerified)){
+
+                                                      Navigator.pushReplacement(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>const MainChildPage(index: 0,)
+
+                                                          ));
+
+
+                                                    }else{
+
+                                                      FirebaseAuth.instance.currentUser?.sendEmailVerification();
+                                                      showDialog(
+                                                        context: context,
+                                                        barrierDismissible:
+                                                        false, // Prevent dismissing by tapping outside
+                                                        builder:
+                                                            (BuildContext context) {
+                                                          return const EmailVerificationScreen();
+                                                        },
+                                                      );
+                                                    }
+                                                  });
+                                                } else {
+                                                  setState(() {
+                                                    loadingicon = false;
+                                                  });
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Text(
+                                                          "لا يوجد اتصال بالانترنت",
+                                                          textAlign: TextAlign.right),
+                                                      duration: Duration(seconds: 2),
+                                                    ),
+                                                  );
+                                                }
+                                              });
+                                            } catch (e) {
+                                              setState(() {
+                                                loadingicon = false;
+                                              });
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                const SnackBar(
+                                                  content: Text("حدث خطأ أعد المحاولة",
+                                                      textAlign: TextAlign.right),
+                                                  duration: Duration(seconds: 2),
+                                                ),
+                                              );
                                             }
-                                            Navigator.pushReplacement(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const MainChildPage(
-                                                          index: 0,
-                                                        )));
                                           });
-                                        } else {
+                                        } on FirebaseAuthException catch (e) {
                                           setState(() {
                                             loadingicon = false;
                                           });
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(
-                                            const SnackBar(
-                                              content: Text(
-                                                  "لا يوجد اتصال بالانترنت",
+                                          String message = e.code;
+                                          switch (e.code) {
+                                            case 'user-not-found':
+                                              message =
+                                              "البريد الإلكتروني المدخل غير مسجل سابقًا";
+                                              break;
+                                            case 'invalid-email':
+                                            case 'wrong-password':
+                                              message = 'فضلًا تأكد من صحة كلمة المرور';
+                                              break;
+                                            case 'Error 17011':
+                                            case 'Error 17009':
+                                              message =
+                                              'فضلًا تأكد من صحة البريد الإلكتروني وكلمة المرور';
+                                              break;
+                                            default:
+                                              message =
+                                              'فضلا تأكد من صحة بياناتك واتصالك بالإنترنت';
+                                          }
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                            SnackBar(
+                                              content: Text(message,
                                                   textAlign: TextAlign.right),
-                                              duration: Duration(seconds: 2),
+                                              duration: const Duration(seconds: 2),
                                             ),
                                           );
                                         }
-                                      });
-                                    } catch (e) {
-                                      setState(() {
-                                        loadingicon = false;
-                                      });
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        const SnackBar(
-                                          content: Text("حدث خطأ أعد المحاولة",
-                                              textAlign: TextAlign.right),
-                                          duration: Duration(seconds: 2),
+                                      }
+                                    },
+                                    child: loadingicon
+                                        ? Container(
+                                      height: DeviceUtil.isTablet ? 80 : 45,
+                                      width: DeviceUtil.isTablet ? 80 : 45,
+                                      decoration: BoxDecoration(
+                                          color: maincolor,
+                                          borderRadius:
+                                          BorderRadius.circular(15)),
+                                      child: const Center(
+                                          child: CircularProgressIndicator(
+                                            color: Colors.white,
+                                          )),
+                                    )
+                                        : Image.asset(
+                                      "assets/uiImages/butt.png",
+                                      height: DeviceUtil.isTablet ? 85 : 50,
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 10,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Checkbox(
+                                                checkColor: const Color.fromARGB(
+                                                    255, 255, 255, 255),
+                                                fillColor: MaterialStateProperty.all(
+                                                    yellowColor),
+                                                value: checkBoxValue,
+                                                onChanged: (v) {
+                                                  setState(() {
+                                                    checkBoxValue = v!;
+                                                  });
+                                                }),
+                                            Text(
+                                              "تذكرني",
+                                              style: TextStyle(
+                                                fontSize: DeviceUtil.isTablet ? 20 : 15,
+                                                color: greyColor,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      );
-                                    }
-                                  });
-                                } on FirebaseAuthException catch (e) {
-                                  setState(() {
-                                    loadingicon = false;
-                                  });
-                                  String message = e.code;
-                                  switch (e.code) {
-                                    case 'user-not-found':
-                                      message =
-                                          "البريد الإلكتروني المدخل غير مسجل سابقًا";
-                                      break;
-                                    case 'invalid-email':
-                                    case 'wrong-password':
-                                      message = 'فضلًا تأكد من صحة كلمة المرور';
-                                      break;
-                                    case 'Error 17011':
-                                    case 'Error 17009':
-                                      message =
-                                          'فضلًا تأكد من صحة البريد الإلكتروني وكلمة المرور';
-                                      break;
-                                    default:
-                                      message =
-                                          'فضلا تأكد من صحة بياناتك واتصالك بالإنترنت';
-                                  }
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(message,
-                                          textAlign: TextAlign.right),
-                                      duration: const Duration(seconds: 2),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                    const ForgetPassword()));
+                                          },
+                                          child: Text(
+                                            'نسيت كلمة المرور؟',
+                                            style: TextStyle(
+                                              fontSize: DeviceUtil.isTablet ? 20 : 15,
+                                              color: greyColor,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  );
-                                }
-                              }
-                            },
-                            child: loadingicon
-                                ? Container(
-                                    height: DeviceUtil.isTablet ? 80 : 45,
-                                    width: DeviceUtil.isTablet ? 80 : 45,
-                                    decoration: BoxDecoration(
-                                        color: maincolor,
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    child: const Center(
-                                        child: CircularProgressIndicator(
-                                      color: Colors.white,
-                                    )),
-                                  )
-                                : Image.asset(
-                                    "assets/uiImages/butt.png",
-                                    height: DeviceUtil.isTablet ? 85 : 50,
                                   ),
-                          ),
-                          Container(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    Checkbox(
-                                        checkColor: const Color.fromARGB(
-                                            255, 255, 255, 255),
-                                        fillColor: MaterialStateProperty.all(
-                                            yellowColor),
-                                        value: checkBoxValue,
-                                        onChanged: (v) {
-                                          setState(() {
-                                            checkBoxValue = v!;
-                                          });
-                                        }),
-                                    Text(
-                                      "تذكرني",
-                                      style: TextStyle(
-                                        fontSize: DeviceUtil.isTablet ? 20 : 15,
-                                        color: greyColor,
-                                        fontWeight: FontWeight.bold,
+                                  Container(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "ليس لديك حساب؟",
+                                        style: TextStyle(
+                                            color: greyColor,
+                                            fontSize: DeviceUtil.isTablet ? 27 : 15,
+                                            fontWeight: FontWeight.bold),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const Forgetpassword()));
-                                  },
-                                  child: Text(
-                                    'نسيت كلمة المرور؟',
-                                    style: TextStyle(
-                                      fontSize: DeviceUtil.isTablet ? 20 : 15,
-                                      color: greyColor,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.pushReplacement(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                  const Signup()));
+                                        },
+                                        child: Text(
+                                          'تسجيل',
+                                          style: TextStyle(
+                                            fontSize: DeviceUtil.isTablet ? 27 : 20,
+                                            color: pinkColor,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "ليس لديك حساب؟",
-                                style: TextStyle(
-                                    color: greyColor,
-                                    fontSize: DeviceUtil.isTablet ? 27 : 15,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const Signup()));
-                                },
-                                child: Text(
-                                  'تسجيل',
-                                  style: TextStyle(
-                                    fontSize: DeviceUtil.isTablet ? 27 : 20,
-                                    color: pinkColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      )),
-                    ]),
+                                ],
+                              )),
+                        ]),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            )),
+                )),
           ],
         ),
       ),

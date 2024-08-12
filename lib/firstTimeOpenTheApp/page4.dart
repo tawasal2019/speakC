@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../controller/istablet.dart';
+import '../controller/is_tablet.dart';
 import '../controller/var.dart';
 import '../view/Auth/login.dart';
 

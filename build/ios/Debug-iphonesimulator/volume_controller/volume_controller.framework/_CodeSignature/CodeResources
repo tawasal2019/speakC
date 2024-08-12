@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/volume_controller-Swift.h</key>
 		<data>
-		9eLu9lawDmj9VeHzppMFVGuyrKg=
+		7FWl4fnHxAeQOEQWPkCjFVi+bh0=
 		</data>
 		<key>Headers/volume_controller-umbrella.h</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		mPW4WZdlGRQmuvYxSX7l2h60TWU=
+		RaH2iywq9nT9FWA3hWuFby1J/OU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/volume_controller.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		vx4LMk4l4FCsRvn2uXtyq/KhGwo=
+		p1wXZ+rbdpBZf7BaN1TUpoizZus=
 		</data>
 		<key>Modules/volume_controller.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		cjyefVd8CNhFvLmGEU/cHgucUps=
+		srbQSgJf84uvyK6Ht+IXTHc4jrw=
 		</data>
 		<key>Modules/volume_controller.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -38,11 +38,11 @@
 		</data>
 		<key>Modules/volume_controller.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		454/FG7jK70hhZPjQiXubXaNRn4=
+		hG0o06nHCuC1kjPo+rybveo1HiA=
 		</data>
 		<key>Modules/volume_controller.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		91SOHKan7HbldcHu78dGd9lejwY=
+		NevaAYZU82sKK7yl0giv/F9d2sI=
 		</data>
 		<key>Modules/volume_controller.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -50,11 +50,11 @@
 		</data>
 		<key>Modules/volume_controller.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		0bnS3RRIstjmSORMdS4J2z4eKM8=
+		mS6V5TyTV3PD7d8qJz3QstijWCo=
 		</data>
 		<key>Modules/volume_controller.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		AdSkuI2wqdBMDks4uPy0mKsjqUk=
+		dCmOO5C6nkKkPeflr1GBxxQ8DkU=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -70,7 +70,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			0fnO+TEvngUJcVuzhdESui+L+b3+OkqCGJjcSQ+ARYc=
+			kuG/G4+ekUQNst0LBB5dPdzXkwDEhgzuLQwFKzGRY88=
 			</data>
 		</dict>
 		<key>Headers/volume_controller-umbrella.h</key>
@@ -91,14 +91,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xBF3oEdcXTn6fdfSvikna51/2tnftxOU6t/cBy9/40I=
+			Q5ft2yAf0buL12G4GnODRW60hNyFMl/xucleTg1w2q0=
 			</data>
 		</dict>
 		<key>Modules/volume_controller.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			21+byk9qnk1nOVR0cDqjjfGux7ZzbYuU2jmn5ARxapQ=
+			JtQLPztmpe0wlmmFWBr7f/aeIUnM8hAJbYd7Nc90Y7w=
 			</data>
 		</dict>
 		<key>Modules/volume_controller.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -112,14 +112,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			XaVIPV8HKWepHRwwNblYKIo0/K/GTAU3h+PswcFE2Jw=
+			ckfUAzvy0EET2hmaTb5krFrKZ/uKMKyUubqIdsodOw8=
 			</data>
 		</dict>
 		<key>Modules/volume_controller.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wAz/Y01fwUWQOjPv5J/lDIIbLhIQZZV1iKbtlx8wIOk=
+			QBaKBZq2mObPD069NeWk71RsoMYbG3NxvUsFarzgNWE=
 			</data>
 		</dict>
 		<key>Modules/volume_controller.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -133,14 +133,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			96lfURDhpfbYBRpwyEvqYO48Hy8c6wRANkqlVlM+uEU=
+			xvKvnwA3QwsXFV9Ry/J6KVqulWfoTb4D+PjSfk86Xgc=
 			</data>
 		</dict>
 		<key>Modules/volume_controller.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			I+TaL0Hey8jlcHymR7t+pS/m+QJvoxv9HzrAbXd/bOo=
+			qnVlkXISYaYfNCKvR7R0V8EdpxcqLvPH8iTJtngsb8g=
 			</data>
 		</dict>
 	</dict>

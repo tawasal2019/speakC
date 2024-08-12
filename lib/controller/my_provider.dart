@@ -38,6 +38,7 @@ class MyProvider with ChangeNotifier {
   }
 
   ///////////////////
+
   ////////////////////
   String lastimagepath = "";
   void setPath(String path) {
@@ -52,7 +53,7 @@ class MyProvider with ChangeNotifier {
   int pass3 = -1;
   int pass4 = -1;
   bool errorpass = false;
-  void seterror(bool b) {
+  void setError(bool b) {
     errorpass = b;
     notifyListeners();
   }
@@ -76,6 +77,7 @@ class MyProvider with ChangeNotifier {
     pass4 = num;
     notifyListeners();
   }
+
   int iscontentOfLibrary = -1;
 
   void setIscontentOfLibrary(int index) {
@@ -83,6 +85,13 @@ class MyProvider with ChangeNotifier {
     notifyListeners();
   } ///////////////////
 
-
 /////////////
+  ///
+////Audio function////
+  String lastAudioPath = "";
+  void addAudioPath(String path) {
+    lastAudioPath = path;
+    notifyListeners();
+  }
+  ////End Audio function////
 }

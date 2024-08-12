@@ -46,7 +46,7 @@ dependencies:
   share_plus: ^7.0.2
   flutter_rating_bar: ^4.0.0
   image_picker: ^0.8.5+3
-  permission_handler: ^10.0.0
+  permission_handler: ^11.3.1
   http: ^0.13.4
   cloud_firestore: ^4.7.1
   firebase_core: ^2.13.0
@@ -57,13 +57,12 @@ dependencies:
   flutter_draggable_gridview: ^0.0.6
   flutter_colorpicker: ^1.0.3
   volume_controller: ^2.0.3
-  just_audio: ^0.9.28
-  flutter_audio_recorder2: ^0.0.2
   keyboard_dismisser: ^3.0.0
   provider: ^6.0.3
   dio: ^4.0.6
   firebase_database: ^10.0.16
-  audioplayers: ^1.0.1
+  just_audio: ^0.9.39
+
   just_audio_cache: ^0.1.1
   flutter_cache_manager: ^3.3.0
   rename: ^2.0.1
@@ -77,6 +76,9 @@ dependencies:
   flutter_launcher_icons: ^0.11.0
   package_info_plus: ^4.1.0
   firebase_messaging: ^14.7.4
+  flutter_sound: ^9.2.13
+  record: ^5.0.4
+
 
 dev_dependencies:
   flutter_test:
@@ -93,6 +95,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/light-rain-109591.mp3
     - assets/justforpay/
     - assets/IconLib/actions/
     - assets/IconLib/Animall/
