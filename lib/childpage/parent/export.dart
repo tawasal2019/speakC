@@ -2,15 +2,15 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../controller/allUploadedDone.dart';
-import '../../controller/checkinternet.dart';
-import '../../controller/erroralert.dart';
-import '../../controller/uploaddataChild.dart';
+import '../../controller/all_uploaded_done.dart';
+import '../../controller/check_internet.dart';
+import '../../controller/error_alert.dart';
+import '../../controller/upload_data_child.dart';
 
-import '/childpage/parent/mainparent.dart';
+import '/childpage/parent/main_parent.dart';
 
 import '/controller/images.dart';
-import '/controller/istablet.dart';
+import '/controller/is_tablet.dart';
 import '/controller/my_provider.dart';
 import '/controller/var.dart';
 import '/model/library.dart';
@@ -18,7 +18,7 @@ import '/model/library.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../controller/libtostring.dart';
+import '../../controller/lib_to_string.dart';
 
 class Export extends StatefulWidget {
   const Export({super.key});
@@ -453,7 +453,7 @@ class _ExportState extends State<Export> {
                                                             .text.isEmpty ||
                                                         explaination
                                                             .text.isEmpty) {
-                                                      erroralert(context,
+                                                      errorAlert(context,
                                                           "يجب ملىء جميع الحقول");
                                                     } else {
                                                       internetConnection()
@@ -496,7 +496,7 @@ class _ExportState extends State<Export> {
                                                                                   1)),
                                                                       (route) =>
                                                                           false);
-                                                                  acceptalert(
+                                                                  acceptAlert(
                                                                     context,
                                                                     "سيتم نشر مكتبتك بعد مراجعتها يمكنك الوصول للمكتبات من خلال اعدادات -> تنزيل المكتبات",
                                                                   );
@@ -510,7 +510,7 @@ class _ExportState extends State<Export> {
                                                                                 1)),
                                                                     (route) =>
                                                                         false);
-                                                                erroralert(
+                                                                errorAlert(
                                                                     context,
                                                                     "حاول مرة اخرى");
                                                               }
@@ -523,7 +523,7 @@ class _ExportState extends State<Export> {
                                                             });
                                                           });
                                                         } else {
-                                                          erroralert(context,
+                                                          errorAlert(context,
                                                               "يرجى الاتصال بالانترنت");
                                                         }
                                                       });

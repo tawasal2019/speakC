@@ -6,7 +6,7 @@ import 'dart:convert' show json, utf8;
 
 import '/controller/var.dart';
 
-import '../model/mykey.dart';
+import '../model/my_key.dart';
 
 class TextToSpeechAPI {
   static final TextToSpeechAPI _singleton = TextToSpeechAPI._internal();

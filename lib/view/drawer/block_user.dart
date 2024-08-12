@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../../controller/checkinternet.dart';
-import '../../controller/erroralert.dart';
+import '../../controller/check_internet.dart';
+import '../../controller/error_alert.dart';
 import '../../controller/var.dart';
 
 class BlockUser extends StatefulWidget {
@@ -109,7 +109,7 @@ class _BlockUserState extends State<BlockUser> {
                                       setState(() {
                                         theWidget = Container();
                                         textController.text = "";
-                                        acceptalert(
+                                        acceptAlert(
                                             context, "تم التعديل بنجاح ");
                                       });
                                     } catch (_) {}
@@ -173,7 +173,7 @@ class _BlockUserState extends State<BlockUser> {
                                       setState(() {
                                         theWidget = Container();
                                         textController.text = "";
-                                        acceptalert(
+                                        acceptAlert(
                                             context, "تم التعديل بنجاح ");
                                       });
                                     } catch (_) {}
@@ -257,7 +257,7 @@ class _BlockUserState extends State<BlockUser> {
                                     setState(() {
                                       theWidget = Container();
                                       textController.text = "";
-                                      acceptalert(context, "تم التعديل بنجاح ");
+                                      acceptAlert(context, "تم التعديل بنجاح ");
                                     });
                                   } catch (_) {}
                                 },

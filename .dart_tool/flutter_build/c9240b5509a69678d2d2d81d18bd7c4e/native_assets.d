@@ -1,0 +1,1 @@
+ /Users/tawasal/Desktop/arabic_child_android/.dart_tool/flutter_build/c9240b5509a69678d2d2d81d18bd7c4e/native_assets.yaml: 

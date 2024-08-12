@@ -1,12 +1,12 @@
-import '/StartPage.dart';
-import '/controller/istablet.dart';
+import '/start_page.dart';
+import '/controller/is_tablet.dart';
 import 'package:flutter/services.dart';
 import '/controller/my_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'Services/PushNotificationService.dart';
+import 'Services/push_notification_service.dart';
 
 //crossAxisAlignment: CrossAxisAlignment.stretch,
 //mainAxisSize: MainAxisSize.min,
@@ -34,6 +34,7 @@ class _MyAppState extends State<MyApp> {
     PushNotificationsManager().init();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     if (!DeviceUtil.isTablet) {
@@ -47,7 +48,7 @@ class _MyAppState extends State<MyApp> {
         child: MaterialApp(
             navigatorKey: navigatorKey,
             debugShowCheckedModeBanner: false,
-            title: 'المتحدث العربي',
+            title: 'تحدث',
             theme: ThemeData(
               primarySwatch: Colors.grey,
               fontFamily: "Almarai",

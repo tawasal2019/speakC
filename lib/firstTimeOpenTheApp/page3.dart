@@ -1,6 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
-import '../controller/istablet.dart';
+import '../controller/is_tablet.dart';
 import '/firstTimeOpenTheApp/page4.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';

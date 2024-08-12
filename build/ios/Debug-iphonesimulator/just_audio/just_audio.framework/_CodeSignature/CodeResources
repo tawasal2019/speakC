@@ -6,11 +6,11 @@
 	<dict>
 		<key>Headers/AudioPlayer.h</key>
 		<data>
-		SZoIGkfbXykjSk9wGkVRLV7De5Y=
+		OLyUgEImQNGkkWMqjyqLstBNSH8=
 		</data>
 		<key>Headers/AudioSource.h</key>
 		<data>
-		mqyqN1ySDHnvBKJKJ56hFkKka6A=
+		d9151JX32YV+yuYKBj1C3LuX7KE=
 		</data>
 		<key>Headers/BetterEventChannel.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/ConcatenatingAudioSource.h</key>
 		<data>
-		0p1+vfv5xBMkDSsfMn4Lc95yNu4=
+		IFtGawz6Z6ewdPCKt72yBbYQsnw=
 		</data>
 		<key>Headers/IndexedAudioSource.h</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Headers/UriAudioSource.h</key>
 		<data>
-		Q1qxESFaUV3S1vKKgEM9fnFu1lA=
+		5/EXyYS/q41sXvPSUgPOlJt3ptM=
 		</data>
 		<key>Headers/just_audio-umbrella.h</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		IlKCvGnetC1R1jOfxBwVm86FpP8=
+		X14HWtTQG8L7XbyVb/cgEwkfWNg=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -67,14 +67,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ECKAaOvbq1x72pLNbURsESU2puty7gMF3VIzdS/SB0E=
+			FmdBS9PoQ42hccyO5JOyXDr2qh+6izYriHfWPhAIr8g=
 			</data>
 		</dict>
 		<key>Headers/AudioSource.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QWUYmV/oFDBXklv3emjPb++oh2i1W3xOJ6buhiunxwE=
+			wN9PZGl7mYCnMlkyLTVUrnHlJWxJF3nQjX3+7OOpwDA=
 			</data>
 		</dict>
 		<key>Headers/BetterEventChannel.h</key>
@@ -95,7 +95,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mytYBhy4/ldK73C8FciFd7HByPDEjaI3PPT9bLV9z8k=
+			/3rEoVvqbhgibwTII7oCFMp2qQlt3IsoPv4Ua4sb5ME=
 			</data>
 		</dict>
 		<key>Headers/IndexedAudioSource.h</key>
@@ -137,7 +137,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gqA/RPqTGNS4a0Qc9acxr4zK1yPOIZNcNJR+zxs4VuY=
+			hp8ysPWe6mblqmv9Xn8puwgqTUpjbuQSVYBCFHzeP5U=
 			</data>
 		</dict>
 		<key>Headers/just_audio-umbrella.h</key>

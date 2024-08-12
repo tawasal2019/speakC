@@ -1,9 +1,9 @@
-import '/childpage/child/mainchildPage.dart';
-import '/pay/deviceinfo.dart';
+import '../childpage/child/main_child_page.dart';
+import '/pay/device_info.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:unicode_moyasar/unicode_moyasar.dart';
-import '../controller/checkinternet.dart';
+import '../controller/check_internet.dart';
 
 class PaymentViewScreen extends StatefulWidget {
   final double amount;

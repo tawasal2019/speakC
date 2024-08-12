@@ -2,13 +2,13 @@
 
 import 'dart:convert';
 import 'package:animated_search_bar/animated_search_bar.dart';
-import '/controller/istablet.dart';
-import '/view/export_and_import/importlibrary.dart';
+import '/controller/is_tablet.dart';
+import '/view/export_and_import/import_library.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../childpage/parent/mainparent.dart';
-import '../../controller/erroralert.dart';
+import '../../childpage/parent/main_parent.dart';
+import '../../controller/error_alert.dart';
 import '/controller/var.dart';
 import '/model/library.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -31,7 +31,7 @@ class _ImportState extends State<Import> {
 
   @override
   void initState() {
-    getdata().then((value) {
+    getData().then((value) {
       setState(() {
         loading = false;
       });
@@ -40,7 +40,7 @@ class _ImportState extends State<Import> {
     super.initState();
   }
 
-  Future getdata() async {
+  Future getData() async {
     await FirebaseFirestore.instance.collection("Shared").get().then((value) {
       for (var element in value.docs) {
         if (element.data()["approval"].toString() == "true") {
@@ -221,7 +221,7 @@ class _ImportState extends State<Import> {
                                                         builder: (context) =>
                                                             const MainParentPage(
                                                                 index: 1)));
-                                                acceptalert(context,
+                                                acceptAlert(context,
                                                     "تم التنزيل بنجاح");
                                               },
                                               child: Padding(

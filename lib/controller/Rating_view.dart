@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import '/controller/checkinternet.dart';
+import '/controller/check_internet.dart';
 import '/controller/var.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class _RatingViewState extends State<RatingView> {
   var _rating2 = 0;
   var _rating3 = 0;
   var _rating4 = 0;
-  bool IsC = false;
+  bool isC = false;
   String isRaiting = "false";
   @override
   void initState() {
@@ -45,7 +45,7 @@ class _RatingViewState extends State<RatingView> {
             children: [
               _buildThanksNote(),
               _causeOfRating(),
-              _ThirdRating(),
+              _thirdRating(),
               _forthRating(),
               _thankYouPage(),
             ],
@@ -100,7 +100,7 @@ class _RatingViewState extends State<RatingView> {
                     setState(() {
                       //_starPosision=20.0;
                       _rating = index + 1;
-                      IsC = true;
+                      isC = true;
                     });
                   },
                   color: pinkColor,
@@ -125,12 +125,12 @@ class _RatingViewState extends State<RatingView> {
                 backgroundColor: pinkColor, // background color
               ),
               onPressed: () {
-                IsC == true
+                isC == true
                     ? _ratingPageController.nextPage(
                         duration: const Duration(microseconds: 300),
                         curve: Curves.easeIn)
                     : Container();
-                IsC = false;
+                isC = false;
               },
               child: const Text(
                 "التالي",
@@ -173,7 +173,7 @@ class _RatingViewState extends State<RatingView> {
                     setState(() {
                       //_starPosision=20.0;
                       _rating2 = index2 + 1;
-                      IsC = true;
+                      isC = true;
                     });
                   },
                   color: pinkColor,
@@ -198,12 +198,12 @@ class _RatingViewState extends State<RatingView> {
                 backgroundColor: pinkColor, // background color
               ),
               onPressed: () {
-                IsC == true
+                isC == true
                     ? _ratingPageController.nextPage(
                         duration: const Duration(microseconds: 300),
                         curve: Curves.easeIn)
                     : Container();
-                IsC = false;
+                isC = false;
               },
               child: const Text(
                 "التالي",
@@ -217,7 +217,7 @@ class _RatingViewState extends State<RatingView> {
     );
   }
 
-  _ThirdRating() {
+  _thirdRating() {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -246,7 +246,7 @@ class _RatingViewState extends State<RatingView> {
                     setState(() {
                       //_starPosision=20.0;
                       _rating3 = index3 + 1;
-                      IsC = true;
+                      isC = true;
                     });
                   },
                   color: pinkColor,
@@ -271,12 +271,12 @@ class _RatingViewState extends State<RatingView> {
                 backgroundColor: pinkColor, // background color
               ),
               onPressed: () {
-                IsC == true
+                isC == true
                     ? _ratingPageController.nextPage(
                         duration: const Duration(microseconds: 300),
                         curve: Curves.easeIn)
                     : Container();
-                IsC = false;
+                isC = false;
               },
               child: const Text(
                 "التالي",
@@ -321,7 +321,7 @@ class _RatingViewState extends State<RatingView> {
                   onPressed: () {
                     setState(() {
                       _rating4 = index4 + 1;
-                      IsC = true;
+                      isC = true;
                     });
                   },
                   color: pinkColor,
@@ -343,51 +343,51 @@ class _RatingViewState extends State<RatingView> {
           color: pinkColor,
           child: MaterialButton(
             onPressed: () {
-              if (IsC == true) {
+              if (isC == true) {
                 isRaiting = "true";
-                print(isRaiting);
+              //  print(isRaiting);
                 switch (_rating) {
                   case 1:
-                    RatingFirebase(0, 0);
+                    ratingFirebase(0, 0);
                     break;
                   case 2:
-                    RatingFirebase(0, 1);
+                    ratingFirebase(0, 1);
                     break;
                   case 3:
-                    RatingFirebase(1, 0);
+                    ratingFirebase(1, 0);
                     break;
                 }
                 switch (_rating2) {
                   case 1:
-                    RatingFirebase2(0, 0);
+                    ratingFirebase2(0, 0);
                     break;
                   case 2:
-                    RatingFirebase2(0, 1);
+                    ratingFirebase2(0, 1);
                     break;
                   case 3:
-                    RatingFirebase2(1, 0);
+                    ratingFirebase2(1, 0);
                     break;
                 }
                 switch (_rating3) {
                   case 1:
-                    RatingFirebase3(0, 0);
+                    ratingFirebase3(0, 0);
                     break;
                   case 2:
-                    RatingFirebase3(0, 1);
+                    ratingFirebase3(0, 1);
                     break;
                   case 3:
-                    RatingFirebase3(1, 0);
+                    ratingFirebase3(1, 0);
                     break;
                 }
                 switch (_rating4) {
                   case 1:
-                    RatingFirebase4(0, 0);
+                    ratingFirebase4(0, 0);
                     break;
                   case 2:
-                    RatingFirebase4(0, 1);
+                    ratingFirebase4(0, 1);
                     break;
                   case 3:
-                    RatingFirebase4(1, 0);
+                    ratingFirebase4(1, 0);
                     break;
                 }
                 _ratingPageController.nextPage(
@@ -443,7 +443,7 @@ class _RatingViewState extends State<RatingView> {
     );
   }
 
-  RatingFirebase(int y, int half) {
+  ratingFirebase(int y, int half) {
     try {
       internetConnection().then((value) async {
         if (value == true) {
@@ -451,9 +451,9 @@ class _RatingViewState extends State<RatingView> {
               .instance
               .collection('rating')
               .doc('sRatingQ1');
-          SharedPreferences Spref = await SharedPreferences.getInstance();
-          Spref.setString("israting", isRaiting);
-          print(isRaiting);
+          SharedPreferences sPref = await SharedPreferences.getInstance();
+          sPref.setString("israting", isRaiting);
+          //print(isRaiting);
 
           ref.update({"Nuser": FieldValue.increment(1)});
           if (y == 1) {
@@ -468,7 +468,7 @@ class _RatingViewState extends State<RatingView> {
     } catch (_) {}
   }
 
-  RatingFirebase2(int y, int half) {
+  ratingFirebase2(int y, int half) {
     try {
       internetConnection().then((value) async {
         if (value == true) {
@@ -491,7 +491,7 @@ class _RatingViewState extends State<RatingView> {
     } catch (_) {}
   }
 
-  RatingFirebase3(int y, int half) {
+  ratingFirebase3(int y, int half) {
     try {
       internetConnection().then((value) async {
         if (value == true) {
@@ -514,7 +514,7 @@ class _RatingViewState extends State<RatingView> {
     } catch (_) {}
   }
 
-  RatingFirebase4(int y, int half) {
+  ratingFirebase4(int y, int half) {
     try {
       internetConnection().then((value) async {
         if (value == true) {

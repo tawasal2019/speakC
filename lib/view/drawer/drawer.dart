@@ -5,30 +5,30 @@ import 'dart:math';
 import '/view/drawer/block_user.dart';
 
 import '../../main.dart';
-import '/childpage/child/mainchildPage.dart';
+import '../../childpage/child/main_child_page.dart';
 import '/childpage/constant.dart';
-import '/childpage/parent/mainparent.dart';
-import '/controller/istablet.dart';
+import '/childpage/parent/main_parent.dart';
+import '/controller/is_tablet.dart';
 import '/controller/my_provider.dart';
-import '/view/drawer/HowToUse.dart';
+import '/view/drawer/how_to_use.dart';
 import 'package:provider/provider.dart';
 
 import '/controller/button.dart';
-import '/controller/checkinternet.dart';
+import '/controller/check_internet.dart';
 import '/view/Auth/login.dart';
-import '/view/drawer/aboutapp.dart';
-import '/view/drawer/contactus.dart';
+import '/view/drawer/about_app.dart';
+import '/view/drawer/contact_us.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:volume_controller/volume_controller.dart';
 
-import '../../controller/erroralert.dart';
-import '../../controller/removeallshared.dart';
+import '../../controller/error_alert.dart';
+import '../../controller/remove_all_shared.dart';
 import '../../controller/var.dart';
-import 'QuestionnairResult.dart';
-import 'libraryUplodedSettings.dart';
+import 'questionnair_result.dart';
+import 'library_uploded_settings.dart';
 
 class Drawerc extends StatefulWidget {
   const Drawerc({Key? key}) : super(key: key);
@@ -46,14 +46,14 @@ class _DrawercState extends State<Drawerc> {
   bool isExpanded = false;
   bool isExpanded1 = false;
   bool isLoading = true;
-  late bool isParentMode;
-  late bool switchValue;
+  bool isParentMode=false;
+  bool switchValue=true;
   bool isDeleting = false;
   final user = FirebaseAuth.instance.currentUser;
 
   @override
   void initState() {
-    getdata().then((value) {
+    getData().then((value) {
       setState(() {
         isLoading = false;
       });
@@ -61,7 +61,7 @@ class _DrawercState extends State<Drawerc> {
     super.initState();
   }
 
-  Future getdata() async {
+  Future getData() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     radiovalue2 = pref.getInt("volume") ?? 0;
     isParentMode = pref.getBool("isParentMode") ?? false;
@@ -72,13 +72,15 @@ class _DrawercState extends State<Drawerc> {
   double fontSize = 24;
   @override
   Widget build(BuildContext context) {
-    return isLoading
+    return /*isLoading
         ? Center(
             child: CircularProgressIndicator(
               color: pinkColor,
             ),
           )
-        : Theme(
+        : */
+      FirebaseAuth.instance.currentUser!=null?
+    Theme(
             data: Theme.of(context).copyWith(
                 canvasColor:
                     const Color.fromARGB(255, 255, 255, 255).withOpacity(1)),
@@ -502,7 +504,7 @@ class _DrawercState extends State<Drawerc> {
                                           children: [
                                             Image.asset(
                                               "assets/uiImages/megaphone.png",
-                                              height: 30,
+                                              height: 25,
                                             ),
                                             Container(
                                               width: 10,
@@ -740,7 +742,7 @@ class _DrawercState extends State<Drawerc> {
                                               children: [
                                                 Image.asset(
                                                   "assets/uiImages/comment-text.png",
-                                                  height: 30,
+                                                  height: 25,
                                                 ),
                                                 Container(
                                                   width: 10,
@@ -954,7 +956,7 @@ class _DrawercState extends State<Drawerc> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const Contactus(),
+                                  builder: (context) => const ContactUs(),
                                 ));
                           },
                         ),
@@ -1329,7 +1331,7 @@ class _DrawercState extends State<Drawerc> {
                                       );
                                     });
                               } else {
-                                erroralert(context, "تحقق من اتصالك بالانترنت");
+                                errorAlert(context, "تحقق من اتصالك بالانترنت");
                               }
                             });
                           },
@@ -1690,7 +1692,7 @@ class _DrawercState extends State<Drawerc> {
                                                             children: [
                                                               InkWell(
                                                                 onTap: () {
-                                                                  setpass(
+                                                                  setPass(
                                                                       3,
                                                                       n1,
                                                                       n2,
@@ -1738,7 +1740,7 @@ class _DrawercState extends State<Drawerc> {
                                                               ),
                                                               InkWell(
                                                                 onTap: () {
-                                                                  setpass(
+                                                                  setPass(
                                                                       2,
                                                                       n1,
                                                                       n2,
@@ -1786,7 +1788,7 @@ class _DrawercState extends State<Drawerc> {
                                                               ),
                                                               InkWell(
                                                                 onTap: () {
-                                                                  setpass(
+                                                                  setPass(
                                                                       1,
                                                                       n1,
                                                                       n2,
@@ -1838,7 +1840,7 @@ class _DrawercState extends State<Drawerc> {
                                                             children: [
                                                               InkWell(
                                                                 onTap: () {
-                                                                  setpass(
+                                                                  setPass(
                                                                       6,
                                                                       n1,
                                                                       n2,
@@ -1886,7 +1888,7 @@ class _DrawercState extends State<Drawerc> {
                                                               ),
                                                               InkWell(
                                                                 onTap: () {
-                                                                  setpass(
+                                                                  setPass(
                                                                       5,
                                                                       n1,
                                                                       n2,
@@ -1934,7 +1936,7 @@ class _DrawercState extends State<Drawerc> {
                                                               ),
                                                               InkWell(
                                                                 onTap: () {
-                                                                  setpass(
+                                                                  setPass(
                                                                       4,
                                                                       n1,
                                                                       n2,
@@ -1986,7 +1988,7 @@ class _DrawercState extends State<Drawerc> {
                                                             children: [
                                                               InkWell(
                                                                 onTap: () {
-                                                                  setpass(
+                                                                  setPass(
                                                                       9,
                                                                       n1,
                                                                       n2,
@@ -2034,7 +2036,7 @@ class _DrawercState extends State<Drawerc> {
                                                               ),
                                                               InkWell(
                                                                 onTap: () {
-                                                                  setpass(
+                                                                  setPass(
                                                                       8,
                                                                       n1,
                                                                       n2,
@@ -2082,7 +2084,7 @@ class _DrawercState extends State<Drawerc> {
                                                               ),
                                                               InkWell(
                                                                 onTap: () {
-                                                                  setpass(
+                                                                  setPass(
                                                                       7,
                                                                       n1,
                                                                       n2,
@@ -2137,7 +2139,7 @@ class _DrawercState extends State<Drawerc> {
                                                             children: [
                                                               InkWell(
                                                                 onTap: () {
-                                                                  setpass(
+                                                                  setPass(
                                                                       0,
                                                                       n1,
                                                                       n2,
@@ -2172,7 +2174,7 @@ class _DrawercState extends State<Drawerc> {
                                                               ),
                                                               InkWell(
                                                                 onTap: () {
-                                                                  setpass(
+                                                                  setPass(
                                                                       0,
                                                                       n1,
                                                                       n2,
@@ -2260,10 +2262,10 @@ class _DrawercState extends State<Drawerc> {
                     ],
                   ),
                 )),
-          );
+          ): const Login();
   }
 
-  setpass(int num, int n1, int n2, int n3, int n4, bool isDelete) {
+  setPass(int num, int n1, int n2, int n3, int n4, bool isDelete) {
     int a = -1;
     if (Provider.of<MyProvider>(context, listen: false).pass1 == -1) {
       if (isDelete) {
@@ -2297,10 +2299,10 @@ class _DrawercState extends State<Drawerc> {
                   builder: (context) => const MainParentPage(index: 1)),
               (route) => false);
           a = 0;
-          Provider.of<MyProvider>(context, listen: false).seterror(false);
+          Provider.of<MyProvider>(context, listen: false).setError(false);
         }
         if (a == -1) {
-          Provider.of<MyProvider>(context, listen: false).seterror(true);
+          Provider.of<MyProvider>(context, listen: false).setError(true);
         }
         Provider.of<MyProvider>(context, listen: false).incPass1(-1);
         Provider.of<MyProvider>(context, listen: false).incPass2(-1);

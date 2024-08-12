@@ -5,8 +5,8 @@ import '/controller/my_provider.dart';
 import 'package:provider/provider.dart';
 
 import '/controller/api.dart';
-import '/controller/checkinternet.dart';
-import '/controller/functionsspeak.dart';
+import '/controller/check_internet.dart';
+import '/controller/functions_speak.dart';
 import '/controller/var.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:just_audio/just_audio.dart';
@@ -22,7 +22,7 @@ speakTts(text) async {
   fluttertts.speak(text);
 }
 
-Future getspeech(String text, String name) async {
+Future getSpeech(String text, String name) async {
   final String audio = await TextToSpeechAPI().synthesizeText(text, name, "ar");
   final bytes = const Base64Decoder().convert(audio, 0, audio.length);
   final dir = await getTemporaryDirectory();
@@ -34,12 +34,12 @@ Future getspeech(String text, String name) async {
   await player.play();
 }
 
-Future howtospeak(String text, context) async {
+Future howToSpeak(String text, context) async {
   String voiceGoogleCloud = isFemale ? "ar-XA-Wavenet-A" : "ar-XA-Wavenet-B";
   internetConnection().then((value) {
     if (value == true) {
       Provider.of<MyProvider>(context, listen: false).setIsSpeakingNow(true);
-      getspeech(modifyTextBeforeSpeak(text), voiceGoogleCloud).then((value) {
+      getSpeech(modifyTextBeforeSpeak(text), voiceGoogleCloud).then((value) {
         Provider.of<MyProvider>(context, listen: false).setIsSpeakingNow(false);
       });
     } else {

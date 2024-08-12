@@ -1,11 +1,17 @@
 class Content {
-  String name;
-  String imgurl;
-  String isImageUpload;
-  String opvoice;
-  String cacheVoicePath;
-  String isVoiceUpload;
+  String nameContent;
+  String imageURL;
 
-  Content(this.name, this.imgurl, this.isImageUpload, this.opvoice,
-      this.cacheVoicePath, this.isVoiceUpload);
+  String isImageUploadbyUser;
+  String localVoiceFilePath;
+  String firebaseVoiceFilePath;
+  String isVoiceUploadByUser;
+
+  Content(
+      this.nameContent,
+      this.imageURL,
+      this.isImageUploadbyUser,
+      this.localVoiceFilePath,
+      this.firebaseVoiceFilePath,
+      this.isVoiceUploadByUser);
 }
